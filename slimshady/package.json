@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "axios": "^0.21.4",
     "mongodb": "^3.5.9",
     "nanoid": "^3.1.25",
     "next": "latest",
