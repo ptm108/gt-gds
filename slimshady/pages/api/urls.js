@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 let db;
 
 export default async (req, res) => {
+  // create a new shortened url
   if (req.method === "POST") {
     let { longURL } = req.body;
 
@@ -45,13 +46,14 @@ export default async (req, res) => {
     }
 
     const _id = await db.collection("urls").insertOne({
-      shortURL: `/${shortURL}`,
+      shortURL: shortURL,
       longURL: longURL,
     });
 
     res.status(200).json(_id.ops[0]);
-  } else {
-    res.setHeader("Allow", "POST");
-    res.status(405).end("Method Not Allowed");
+    return;
   }
+
+  res.setHeader("Allow", "POST");
+  res.status(405).end("Method Not Allowed");
 };
