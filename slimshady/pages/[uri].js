@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
-import axios from "axios";
+
+import { client } from "../api";
 
 const RedirectURL = () => {
   const router = useRouter();
@@ -10,13 +11,26 @@ const RedirectURL = () => {
 };
 
 export const getServerSideProps = async (context) => {
-  console.log(context.query.uri);
+  let longURL;
+
+  await client
+    .get(`/urls/${context.query.uri}`)
+    .then((res) => {
+      longURL = res.data.longURL;
+    })
+    .catch((err) => console.log(err));
+
+  if (longURL) {
+    return {
+      redirect: {
+        destination: longURL,
+        permanent: false,
+      },
+    };
+  }
 
   return {
-    redirect: {
-      destination: "https://www.google.com",
-      permanent: false,
-    },
+    props: {},
   };
 };
 
