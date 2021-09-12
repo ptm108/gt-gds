@@ -4,7 +4,6 @@ import { client } from "../api";
 
 const RedirectURL = () => {
   const router = useRouter();
-
   const { uri } = router.query;
 
   return <p>{uri}</p>;
