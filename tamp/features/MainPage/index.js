@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MainPage = ({ paginate }) => {
+const MainPage = ({ paginate, setRes }) => {
   const classes = useStyles();
 
   const [longURL, setLongURL] = useState("");
@@ -54,12 +54,15 @@ const MainPage = ({ paginate }) => {
     createShortenedURL(longURL)
       .then((res) => {
         console.log(res);
+        setRes(res.data);
         setTimeout(() => paginate(3), 1000);
       })
       .catch((err) => {
         console.log(err);
+        setRes(err.response.data);
         setTimeout(() => paginate(4), 1000);
-      });
+      })
+      .finally(() => setLongURL(""));
   };
 
   return (

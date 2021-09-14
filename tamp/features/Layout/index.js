@@ -21,8 +21,8 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
     padding: theme.spacing(2),
     [theme.breakpoints.down("sm")]: {
-      fontSize: 10,
-      textAlign: "left",
+      fontSize: 8,
+      textAlign: "center",
     },
   },
 }));
@@ -34,20 +34,26 @@ const Layout = ({ children }) => {
     <div className={classes.root}>
       {children}
       <div className={classes.credits}>
-        <div>
-          Icons made by{" "}
-          <Link href="https://www.flaticon.com/authors/surang" title="surang">
-            surang
-          </Link>
-          ,{" "}
-          <Link href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">
-            Darius Dan
-          </Link>{" "}
-          from{" "}
-          <Link href="https://www.flaticon.com/" title="Flaticon">
-            www.flaticon.com
-          </Link>
-        </div>
+        Icons made by{" "}
+        <Link href="https://www.flaticon.com/authors/surang" title="surang">
+          surang
+        </Link>
+        ,{" "}
+        <Link href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">
+          Darius Dan
+        </Link>
+        ,{" "}
+        <Link href="https://www.flaticon.com/authors/those-icons" title="Those Icons">
+          Those Icons
+        </Link>
+        ,{" "}
+        <Link href="https://www.flaticon.com/authors/freepik" title="Freepik">
+          Freepik
+        </Link>{" "}
+        from{" "}
+        <Link href="https://www.flaticon.com/" title="Flaticon">
+          www.flaticon.com
+        </Link>
       </div>
     </div>
   );

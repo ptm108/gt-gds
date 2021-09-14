@@ -1,8 +1,5 @@
 import React from "react";
 import { Button, Card, makeStyles, TextField, Typography } from "@material-ui/core";
-import { FileCopyOutlined } from "@material-ui/icons";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-
 import { AnimateWrapper } from "../Animate";
 
 const useStyles = makeStyles((theme) => ({
@@ -38,40 +35,27 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     padding: theme.spacing(3),
     marginTop: theme.spacing(3),
-    gap: theme.spacing(1),
   },
-  textField: {
-    margin: theme.spacing(2, 0),
+  typography: {
+    margin: "8px auto 16px",
+    textAlign: "center",
   },
 }));
 
-const ShortURLPage = ({ paginate, res }) => {
+const ErrorPage = ({ paginate, res }) => {
   const classes = useStyles();
-  console.log(res);
-  console.log(paginate);
 
   return (
     <AnimateWrapper className={classes.root}>
-      <img src="/latte.svg" alt="tamper" className={classes.image} />
+      <img src="/broken.svg" alt="tamper" className={classes.image} />
       <Typography variant="h1" className={classes.headerText}>
-        Here ya go
+        Whoops
       </Typography>
       <Card variant="outlined" className={classes.cardRoot}>
-        <TextField
-          className={classes.textField}
-          margin="dense"
-          fullWidth
-          variant="outlined"
-          placeholder="Your URL to tamp"
-          value={`${window ? window.location.href : ""}${res.shortURL}`}
-          disabled
-        />
-        <CopyToClipboard text={`${window ? window.location.href : ""}${res.shortURL}`}>
-          <Button color="primary" fullWidth variant="contained" startIcon={<FileCopyOutlined />}>
-            Copy
-          </Button>
-        </CopyToClipboard>
-        <Button color="primary" fullWidth onClick={() => paginate(1)}>
+        <Typography variant="body1" className={classes.typography}>
+          {res.error}
+        </Typography>
+        <Button color="primary" fullWidth variant="contained" onClick={() => paginate(1)}>
           Again!
         </Button>
       </Card>
@@ -79,4 +63,4 @@ const ShortURLPage = ({ paginate, res }) => {
   );
 };
 
-export default ShortURLPage;
+export default ErrorPage;
