@@ -3,6 +3,9 @@
 tamp:
   component: "@sls-next/serverless-component@latest"
   inputs: 
+    cloudfront: 
+      distributionId: EELMBFQP06XXS
+    bucketName: h63riv-bo17wfo
     bucketRegion: "ap-southeast-1"
     runtime:
       defaultLambda: "nodejs14.x"
