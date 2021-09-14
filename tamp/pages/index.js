@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
-import Layout from "../features/Layout";
 import clientPromise from "../lib/mongodb";
+import Layout from "../features/Layout";
 import MainPage from "../features/MainPage";
+import LoadingPage from "../features/LoadingPage";
 
 const Home = () => {
+  const [page, setPage] = useState(1);
+
   return (
     <Layout>
-      <MainPage />
+      <AnimatePresence>
+        {page === 1 && <MainPage />}
+        {page === 2 && <LoadingPage />}
+      </AnimatePresence>
     </Layout>
   );
 };

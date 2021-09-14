@@ -2,8 +2,21 @@ import React, { Fragment, useState } from "react";
 import { Button, Card, makeStyles, TextField, Typography } from "@material-ui/core";
 
 import { createShortenedURL } from "./api";
+import { AnimateWrapper } from "../Animate";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: theme.spacing(1),
+    width: "50%",
+    maxWidth: 500,
+    [theme.breakpoints.down("sm")]: {
+      width: "90%",
+    },
+  },
   headerText: {
     textTransform: "uppercase",
     fontSize: "5rem",
@@ -21,13 +34,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   cardRoot: {
+    flex: 1,
     padding: theme.spacing(3),
     marginTop: theme.spacing(3),
-    width: "50%",
-    maxWidth: 500,
-    [theme.breakpoints.down("sm")]: {
-      width: "90%",
-    },
   },
   textField: {
     margin: theme.spacing(2, 0),
@@ -46,7 +55,7 @@ const MainPage = () => {
   };
 
   return (
-    <Fragment>
+    <AnimateWrapper className={classes.root}>
       <img src="/tamper.svg" alt="tamper" className={classes.image} />
       <Typography variant="h1" className={classes.headerText}>
         URL Tamper
@@ -74,7 +83,7 @@ const MainPage = () => {
           TAMP IT
         </Button>
       </Card>
-    </Fragment>
+    </AnimateWrapper>
   );
 };
 

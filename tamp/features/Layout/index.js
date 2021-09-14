@@ -37,6 +37,10 @@ const Layout = ({ children }) => {
           Icons made by{" "}
           <Link href="https://www.flaticon.com/authors/surang" title="surang">
             surang
+          </Link>
+          ,{" "}
+          <Link href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">
+            Darius Dan
           </Link>{" "}
           from{" "}
           <Link href="https://www.flaticon.com/" title="Flaticon">
