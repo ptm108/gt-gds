@@ -1,28 +1,37 @@
-import { useRouter } from "next/router";
+import React from "react";
+import Layout from "../features/Layout";
+import NotFoundPage from "../features/NotFoundPage";
 
-import { client } from "../api";
+import clientPromise from "../lib/mongodb";
 
 const RedirectURL = () => {
-  const router = useRouter();
-  const { uri } = router.query;
-
-  return <p>{uri}</p>;
+  return (
+    <Layout>
+      <NotFoundPage />
+    </Layout>
+  );
 };
 
 export const getServerSideProps = async (context) => {
-  let longURL;
+  let db;
 
-  await client
-    .get(`/urls/${context.query.uri}`)
-    .then((res) => {
-      longURL = res.data.longURL;
+  // initiate db connection
+  if (!db) {
+    const client = await clientPromise;
+    db = client.db();
+  }
+
+  // check if long url is already in db
+  const urls = await db
+    .collection("urls")
+    .find({
+      shortURL: context.query.uri,
     })
-    .catch((err) => console.log(err));
-
-  if (longURL) {
+    .toArray();
+  if (urls.length > 0) {
     return {
       redirect: {
-        destination: longURL,
+        destination: urls[0].longURL,
         permanent: false,
       },
     };
