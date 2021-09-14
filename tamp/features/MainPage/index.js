@@ -81,18 +81,20 @@ const MainPage = ({ paginate, setRes }) => {
         <Typography variant="body2">
           the method a barista uses to turn loose coffee into a tightly compressed puck
         </Typography>
-        <TextField
-          className={classes.textField}
-          margin="dense"
-          fullWidth
-          variant="outlined"
-          placeholder="Your URL to tamp"
-          value={longURL}
-          onChange={(e) => setLongURL(e.target.value)}
-        />
-        <Button color="primary" fullWidth variant="contained" onClick={handleSubmit}>
-          TAMP IT
-        </Button>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            className={classes.textField}
+            margin="dense"
+            fullWidth
+            variant="outlined"
+            placeholder="Your URL to tamp"
+            value={longURL}
+            onChange={(e) => setLongURL(e.target.value)}
+          />
+          <Button color="primary" fullWidth variant="contained" type="submit">
+            TAMP IT
+          </Button>
+        </form>
       </Card>
     </AnimateWrapper>
   );
