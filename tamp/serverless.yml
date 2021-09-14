@@ -1,7 +1,7 @@
 # serverless.yml
 
 tamp:
-  component: "@sls-next/serverless-component@3.1.0"
+  component: "@sls-next/serverless-component@latest"
   inputs: 
     bucketRegion: "ap-southeast-1"
     runtime:
