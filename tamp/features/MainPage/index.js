@@ -43,15 +43,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MainPage = () => {
+const MainPage = ({ paginate }) => {
   const classes = useStyles();
 
   const [longURL, setLongURL] = useState("");
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    paginate(2);
+
     createShortenedURL(longURL)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        console.log(res);
+        setTimeout(() => paginate(3), 1000);
+      })
+      .catch((err) => {
+        console.log(err);
+        setTimeout(() => paginate(4), 1000);
+      });
   };
 
   return (
@@ -65,7 +73,7 @@ const MainPage = () => {
           tamp
         </Typography>
         <Typography color="textSecondary">
-          <i>verb</i>
+          <i>/ verb /</i>
         </Typography>
         <Typography variant="body2">
           the method a barista will uses turn loose coffee into a tightly compressed puck

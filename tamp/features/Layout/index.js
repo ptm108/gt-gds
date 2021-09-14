@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     [theme.breakpoints.down("sm")]: {
       fontSize: 10,
+      textAlign: "left",
     },
   },
 }));

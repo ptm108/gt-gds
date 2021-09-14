@@ -7,12 +7,12 @@ import MainPage from "../features/MainPage";
 import LoadingPage from "../features/LoadingPage";
 
 const Home = () => {
-  const [page, setPage] = useState(1);
+  const [page, paginate] = useState(1);
 
   return (
     <Layout>
       <AnimatePresence>
-        {page === 1 && <MainPage />}
+        {page === 1 && <MainPage paginate={paginate} />}
         {page === 2 && <LoadingPage />}
       </AnimatePresence>
     </Layout>
