@@ -1,0 +1,11 @@
+# serverless.yml
+
+tamp:
+  component: "@sls-next/serverless-component@3.1.0"
+  inputs: 
+    bucketRegion: "ap-southeast-1"
+    runtime:
+      defaultLambda: "nodejs14.x"
+      apiLambda: "nodejs14.x"
+      imageLambda: "nodejs14.x"
+    memory: 1024
