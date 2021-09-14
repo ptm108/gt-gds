@@ -8,6 +8,11 @@ export default async (req, res) => {
   if (req.method === "POST") {
     let { longURL } = req.body;
 
+    if (!longURL) {
+      res.status(400).json({ error: "Boohoo, you've provided an invalid URL" });
+      return;
+    }
+
     // sanitize url
     longURL = longURL.trim();
 

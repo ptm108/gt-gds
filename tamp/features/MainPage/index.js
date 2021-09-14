@@ -1,5 +1,7 @@
-import React, { Fragment } from "react";
-import { Button, Card, CardContent, makeStyles, TextField, Typography } from "@material-ui/core";
+import React, { Fragment, useState } from "react";
+import { Button, Card, makeStyles, TextField, Typography } from "@material-ui/core";
+
+import { createShortenedURL } from "./api";
 
 const useStyles = makeStyles((theme) => ({
   headerText: {
@@ -35,6 +37,14 @@ const useStyles = makeStyles((theme) => ({
 const MainPage = () => {
   const classes = useStyles();
 
+  const [longURL, setLongURL] = useState("");
+
+  const handleSubmit = () => {
+    createShortenedURL(longURL)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <Fragment>
       <img src="/tamper.svg" alt="tamper" className={classes.image} />
@@ -57,8 +67,10 @@ const MainPage = () => {
           fullWidth
           variant="outlined"
           placeholder="Your URL to tamp"
+          value={longURL}
+          onChange={(e) => setLongURL(e.target.value)}
         />
-        <Button color="primary" fullWidth variant="contained">
+        <Button color="primary" fullWidth variant="contained" onClick={handleSubmit}>
           TAMP IT
         </Button>
       </Card>
