@@ -1,13 +1,16 @@
-import Layout from "../components/Layout";
-import clientPromise from "../lib/mongodb";
+import React from "react";
 
-export default function Home({ isConnected }) {
+import Layout from "../features/Layout";
+import clientPromise from "../lib/mongodb";
+import MainPage from "../features/MainPage";
+
+const Home = () => {
   return (
     <Layout>
-      <img src="/tamper.svg" alt="tamper" />
+      <MainPage />
     </Layout>
   );
-}
+};
 
 export async function getServerSideProps(context) {
   const client = await clientPromise;
@@ -17,10 +20,9 @@ export async function getServerSideProps(context) {
   // const db = client.db("myDatabase");
   // Then you can execute queries against your database like so:
   // db.find({}) or any of the MongoDB Node Driver commands
-
-  const isConnected = await client.isConnected();
-
   return {
-    props: { isConnected },
+    props: {},
   };
 }
+
+export default Home;
