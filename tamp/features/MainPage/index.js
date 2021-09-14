@@ -55,12 +55,12 @@ const MainPage = ({ paginate, setRes }) => {
       .then((res) => {
         console.log(res);
         setRes(res.data);
-        setTimeout(() => paginate(3), 1000);
+        setTimeout(() => paginate(3), 800);
       })
       .catch((err) => {
         console.log(err);
         setRes(err.response.data);
-        setTimeout(() => paginate(4), 1000);
+        setTimeout(() => paginate(4), 800);
       })
       .finally(() => setLongURL(""));
   };

@@ -53,7 +53,7 @@ const ErrorPage = ({ paginate, res }) => {
       </Typography>
       <Card variant="outlined" className={classes.cardRoot}>
         <Typography variant="body1" className={classes.typography}>
-          {res.error}
+          {res && res.error && res.error}
         </Typography>
         <Button color="primary" fullWidth variant="contained" onClick={() => paginate(1)}>
           Again!
