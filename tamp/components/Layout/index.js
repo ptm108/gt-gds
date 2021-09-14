@@ -1,6 +1,5 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
-import Wave from "../common/Wave";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,25 +11,15 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     position: "relative",
     overflow: "hidden",
-  },
-  blob: {
-    width: "100%",
-    position: "absolute",
-    top: 0,
-    left: 0,
-    zIndex: -99,
+    backgroundImage: "url('/blob-scene.svg')",
+    backgroundSize: "cover",
   },
 }));
 
 const Layout = ({ children }) => {
   const classes = useStyles();
 
-  return (
-    <div className={classes.root}>
-      <Wave className={classes.blob} />
-      {children}
-    </div>
-  );
+  return <div className={classes.root}>{children}</div>;
 };
 
 export default Layout;

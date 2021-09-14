@@ -2,7 +2,11 @@ import Layout from "../components/Layout";
 import clientPromise from "../lib/mongodb";
 
 export default function Home({ isConnected }) {
-  return <Layout>test</Layout>;
+  return (
+    <Layout>
+      <img src="/tamper.svg" alt="tamper" />
+    </Layout>
+  );
 }
 
 export async function getServerSideProps(context) {
