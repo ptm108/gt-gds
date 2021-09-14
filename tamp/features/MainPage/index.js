@@ -79,7 +79,7 @@ const MainPage = ({ paginate, setRes }) => {
           <i>/ verb /</i>
         </Typography>
         <Typography variant="body2">
-          the method a barista will uses turn loose coffee into a tightly compressed puck
+          the method a barista uses to turn loose coffee into a tightly compressed puck
         </Typography>
         <TextField
           className={classes.textField}
